@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><Patient xmlns="http://hl7.org/fhir">
+<?xml version="1.0" encoding="UTF-8"?>
+<Patient xmlns="http://hl7.org/fhir">
 	<id value="example"/>
 	<text>
 		<status value="generated"/>
@@ -7,7 +8,7 @@
 				<tbody>
 					<tr>
 						<td>Name</td>
-						<td>Peter James 
+						<td>Peter James
               <b>Chalmers</b> (&quot;Jim&quot;)
             </td>
 					</tr>

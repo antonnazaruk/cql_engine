@@ -1,0 +1,381 @@
+{
+  "resourceType": "Bundle",
+  "type": "batch",
+  "entry": [ {
+    "fullUrl": "urn:uuid:24cb4eab-6166-3530-bddc-a5a8a14a4fc1",
+    "resource": {
+      "resourceType": "Organization",
+      "id": "24cb4eab-6166-3530-bddc-a5a8a14a4fc1",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization" ]
+      },
+      "extension": [ {
+        "url": "http://synthetichealth.github.io/synthea/utilization-encounters-extension",
+        "valueInteger": 112
+      }, {
+        "url": "http://synthetichealth.github.io/synthea/utilization-procedures-extension",
+        "valueInteger": 0
+      }, {
+        "url": "http://synthetichealth.github.io/synthea/utilization-labs-extension",
+        "valueInteger": 0
+      }, {
+        "url": "http://synthetichealth.github.io/synthea/utilization-prescriptions-extension",
+        "valueInteger": 0
+      } ],
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "24cb4eab-6166-3530-bddc-a5a8a14a4fc1"
+      } ],
+      "active": true,
+      "type": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        } ],
+        "text": "Healthcare Provider"
+      } ],
+      "name": "MILFORD REGIONAL MEDICAL CENTER",
+      "telecom": [ {
+        "system": "phone",
+        "value": "5084731190"
+      } ],
+      "address": [ {
+        "line": [ "14 PROSPECT STREET" ],
+        "city": "MILFORD",
+        "state": "MA",
+        "postalCode": "01757",
+        "country": "US"
+      } ]
+    },
+    "request": {
+      "method": "POST",
+      "url": "Organization",
+      "ifNoneExist": "identifier=https://github.com/synthetichealth/synthea|24cb4eab-6166-3530-bddc-a5a8a14a4fc1"
+    }
+  }, {
+    "fullUrl": "urn:uuid:e7defd99-1c69-307b-9e99-5bb405c3bd7d",
+    "resource": {
+      "resourceType": "Location",
+      "id": "e7defd99-1c69-307b-9e99-5bb405c3bd7d",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-location" ]
+      },
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "e7defd99-1c69-307b-9e99-5bb405c3bd7d"
+      } ],
+      "status": "active",
+      "name": "MILFORD REGIONAL MEDICAL CENTER",
+      "telecom": [ {
+        "system": "phone",
+        "value": "5084731190"
+      } ],
+      "address": {
+        "line": [ "14 PROSPECT STREET" ],
+        "city": "MILFORD",
+        "state": "MA",
+        "postalCode": "01757",
+        "country": "US"
+      },
+      "position": {
+        "longitude": -71.521419,
+        "latitude": 42.158692
+      },
+      "managingOrganization": {
+        "identifier": {
+          "system": "https://github.com/synthetichealth/synthea",
+          "value": "24cb4eab-6166-3530-bddc-a5a8a14a4fc1"
+        },
+        "display": "MILFORD REGIONAL MEDICAL CENTER"
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "Location",
+      "ifNoneExist": "identifier=https://github.com/synthetichealth/synthea|e7defd99-1c69-307b-9e99-5bb405c3bd7d"
+    }
+  }, {
+    "fullUrl": "urn:uuid:ea982d94-d88d-3cd8-900b-6f09a956f339",
+    "resource": {
+      "resourceType": "Organization",
+      "id": "ea982d94-d88d-3cd8-900b-6f09a956f339",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization" ]
+      },
+      "extension": [ {
+        "url": "http://synthetichealth.github.io/synthea/utilization-encounters-extension",
+        "valueInteger": 61
+      }, {
+        "url": "http://synthetichealth.github.io/synthea/utilization-procedures-extension",
+        "valueInteger": 48
+      }, {
+        "url": "http://synthetichealth.github.io/synthea/utilization-labs-extension",
+        "valueInteger": 25
+      }, {
+        "url": "http://synthetichealth.github.io/synthea/utilization-prescriptions-extension",
+        "valueInteger": 21
+      } ],
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "ea982d94-d88d-3cd8-900b-6f09a956f339"
+      } ],
+      "active": true,
+      "type": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        } ],
+        "text": "Healthcare Provider"
+      } ],
+      "name": "PCP7130",
+      "telecom": [ {
+        "system": "phone",
+        "value": "508-478-6725"
+      } ],
+      "address": [ {
+        "line": [ "89 MAIN ST" ],
+        "city": "MILFORD",
+        "state": "MA",
+        "postalCode": "01757-2600",
+        "country": "US"
+      } ]
+    },
+    "request": {
+      "method": "POST",
+      "url": "Organization",
+      "ifNoneExist": "identifier=https://github.com/synthetichealth/synthea|ea982d94-d88d-3cd8-900b-6f09a956f339"
+    }
+  }, {
+    "fullUrl": "urn:uuid:a05e5292-c54a-3150-9830-bf7565a02013",
+    "resource": {
+      "resourceType": "Location",
+      "id": "a05e5292-c54a-3150-9830-bf7565a02013",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-location" ]
+      },
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "a05e5292-c54a-3150-9830-bf7565a02013"
+      } ],
+      "status": "active",
+      "name": "PCP7130",
+      "telecom": [ {
+        "system": "phone",
+        "value": "508-478-6725"
+      } ],
+      "address": {
+        "line": [ "89 MAIN ST" ],
+        "city": "MILFORD",
+        "state": "MA",
+        "postalCode": "01757-2600",
+        "country": "US"
+      },
+      "position": {
+        "longitude": -71.521419,
+        "latitude": 42.158691999999995
+      },
+      "managingOrganization": {
+        "identifier": {
+          "system": "https://github.com/synthetichealth/synthea",
+          "value": "ea982d94-d88d-3cd8-900b-6f09a956f339"
+        },
+        "display": "PCP7130"
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "Location",
+      "ifNoneExist": "identifier=https://github.com/synthetichealth/synthea|a05e5292-c54a-3150-9830-bf7565a02013"
+    }
+  }, {
+    "fullUrl": "urn:uuid:611b2b9d-9a21-3e38-a5d9-80ac5ff06d1b",
+    "resource": {
+      "resourceType": "Organization",
+      "id": "611b2b9d-9a21-3e38-a5d9-80ac5ff06d1b",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization" ]
+      },
+      "extension": [ {
+        "url": "http://synthetichealth.github.io/synthea/utilization-encounters-extension",
+        "valueInteger": 81
+      }, {
+        "url": "http://synthetichealth.github.io/synthea/utilization-procedures-extension",
+        "valueInteger": 69
+      }, {
+        "url": "http://synthetichealth.github.io/synthea/utilization-labs-extension",
+        "valueInteger": 168
+      }, {
+        "url": "http://synthetichealth.github.io/synthea/utilization-prescriptions-extension",
+        "valueInteger": 142
+      } ],
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "611b2b9d-9a21-3e38-a5d9-80ac5ff06d1b"
+      } ],
+      "active": true,
+      "type": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        } ],
+        "text": "Healthcare Provider"
+      } ],
+      "name": "MILFORD REGIONAL PHYSICIAN GROUP INC",
+      "telecom": [ {
+        "system": "phone",
+        "value": "(555) 555-5555"
+      } ],
+      "address": [ {
+        "line": [ "12 UXBRIDGE RD" ],
+        "city": "MENDON",
+        "state": "MA",
+        "postalCode": "01756-1094",
+        "country": "US"
+      } ]
+    },
+    "request": {
+      "method": "POST",
+      "url": "Organization",
+      "ifNoneExist": "identifier=https://github.com/synthetichealth/synthea|611b2b9d-9a21-3e38-a5d9-80ac5ff06d1b"
+    }
+  }, {
+    "fullUrl": "urn:uuid:1c2eb161-0dbc-3ec7-b440-d8f629c63406",
+    "resource": {
+      "resourceType": "Location",
+      "id": "1c2eb161-0dbc-3ec7-b440-d8f629c63406",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-location" ]
+      },
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "1c2eb161-0dbc-3ec7-b440-d8f629c63406"
+      } ],
+      "status": "active",
+      "name": "MILFORD REGIONAL PHYSICIAN GROUP INC",
+      "telecom": [ {
+        "system": "phone",
+        "value": "(555) 555-5555"
+      } ],
+      "address": {
+        "line": [ "12 UXBRIDGE RD" ],
+        "city": "MENDON",
+        "state": "MA",
+        "postalCode": "01756-1094",
+        "country": "US"
+      },
+      "position": {
+        "longitude": -71.544519,
+        "latitude": 42.09387
+      },
+      "managingOrganization": {
+        "identifier": {
+          "system": "https://github.com/synthetichealth/synthea",
+          "value": "611b2b9d-9a21-3e38-a5d9-80ac5ff06d1b"
+        },
+        "display": "MILFORD REGIONAL PHYSICIAN GROUP INC"
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "Location",
+      "ifNoneExist": "identifier=https://github.com/synthetichealth/synthea|1c2eb161-0dbc-3ec7-b440-d8f629c63406"
+    }
+  }, {
+    "fullUrl": "urn:uuid:b06770b5-b695-3c1a-9685-ae2223966ff7",
+    "resource": {
+      "resourceType": "Organization",
+      "id": "b06770b5-b695-3c1a-9685-ae2223966ff7",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization" ]
+      },
+      "extension": [ {
+        "url": "http://synthetichealth.github.io/synthea/utilization-encounters-extension",
+        "valueInteger": 3
+      }, {
+        "url": "http://synthetichealth.github.io/synthea/utilization-procedures-extension",
+        "valueInteger": 0
+      }, {
+        "url": "http://synthetichealth.github.io/synthea/utilization-labs-extension",
+        "valueInteger": 0
+      }, {
+        "url": "http://synthetichealth.github.io/synthea/utilization-prescriptions-extension",
+        "valueInteger": 0
+      } ],
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "b06770b5-b695-3c1a-9685-ae2223966ff7"
+      } ],
+      "active": true,
+      "type": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        } ],
+        "text": "Healthcare Provider"
+      } ],
+      "name": "GENERAL HEALTH CARE",
+      "telecom": [ {
+        "system": "phone",
+        "value": "508-643-0100"
+      } ],
+      "address": [ {
+        "line": [ "66 SOUTH WASHINGTON STREET" ],
+        "city": "NORTH ATTLEBORO",
+        "state": "MA",
+        "postalCode": "2760",
+        "country": "US"
+      } ]
+    },
+    "request": {
+      "method": "POST",
+      "url": "Organization",
+      "ifNoneExist": "identifier=https://github.com/synthetichealth/synthea|b06770b5-b695-3c1a-9685-ae2223966ff7"
+    }
+  }, {
+    "fullUrl": "urn:uuid:069940a6-dba4-3f95-9915-3fac8c83e85c",
+    "resource": {
+      "resourceType": "Location",
+      "id": "069940a6-dba4-3f95-9915-3fac8c83e85c",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-location" ]
+      },
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "069940a6-dba4-3f95-9915-3fac8c83e85c"
+      } ],
+      "status": "active",
+      "name": "GENERAL HEALTH CARE",
+      "telecom": [ {
+        "system": "phone",
+        "value": "508-643-0100"
+      } ],
+      "address": {
+        "line": [ "66 SOUTH WASHINGTON STREET" ],
+        "city": "NORTH ATTLEBORO",
+        "state": "MA",
+        "postalCode": "2760",
+        "country": "US"
+      },
+      "position": {
+        "longitude": -71.3329695,
+        "latitude": 41.9799756
+      },
+      "managingOrganization": {
+        "identifier": {
+          "system": "https://github.com/synthetichealth/synthea",
+          "value": "b06770b5-b695-3c1a-9685-ae2223966ff7"
+        },
+        "display": "GENERAL HEALTH CARE"
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "Location",
+      "ifNoneExist": "identifier=https://github.com/synthetichealth/synthea|069940a6-dba4-3f95-9915-3fac8c83e85c"
+    }
+  } ]
+}

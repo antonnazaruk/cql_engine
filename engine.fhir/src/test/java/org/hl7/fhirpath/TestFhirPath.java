@@ -22,6 +22,7 @@ import java.util.TimeZone;
 import javax.xml.bind.JAXB;
 import javax.xml.bind.JAXBException;
 
+import ca.uhn.fhir.parser.IParser;
 import org.cqframework.cql.cql2elm.CqlTranslator;
 import org.cqframework.cql.cql2elm.CqlTranslatorException;
 import org.cqframework.cql.cql2elm.FhirLibrarySourceProvider;
@@ -33,6 +34,7 @@ import org.cqframework.cql.elm.tracking.TrackBack;
 import org.fhir.ucum.UcumEssenceService;
 import org.fhir.ucum.UcumException;
 import org.fhir.ucum.UcumService;
+import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.hl7.fhir.r4.model.*;
 import org.hl7.fhirpath.tests.Group;
 import org.hl7.fhirpath.tests.InvalidType;
@@ -175,8 +177,14 @@ public class TestFhirPath {
         options.add(CqlTranslator.Options.EnableDateRangeOptimization);
         UcumService ucumService = new UcumEssenceService(
                 UcumEssenceService.class.getResourceAsStream("/ucum-essence.xml"));
-        CqlTranslator translator = CqlTranslator.fromText(cql, getModelManager(), getLibraryManager(), ucumService,
-                options.toArray(new CqlTranslator.Options[options.size()]));
+        ModelManager modelManager = getModelManager();
+        LibraryManager libraryManager = getLibraryManager();
+        CqlTranslator translator = CqlTranslator.fromText(
+            cql,
+            modelManager,
+            libraryManager,
+            ucumService,
+            options.toArray(new CqlTranslator.Options[options.size()]));
         if (translator.getErrors().size() > 0) {
             ArrayList<String> errors = new ArrayList<>();
             for (CqlTranslatorException error : translator.getErrors()) {
@@ -447,6 +455,95 @@ public class TestFhirPath {
         System.out.println(
                 String.format("Tests file %s passed %s of %s tests.", testsFilePath, passCounter, testCounter));
     }
+
+    @Test
+    public void testJsonHeavy() throws UcumException {
+        String[] resourceFileNames = {
+              "r4/input/fhir_json/Pierre431_Johnston597_6c900df8-611e-211f-d611-c4e9af509616.json"
+            , "r4/input/fhir_json/hospitalInformation1622188523697.json"
+            , "r4/input/fhir_json/practitionerInformation1622188523697.json"
+            , "r4/input/fhir_json/Moses679_Pagac496_5c6f5e13-6897-7557-9b75-8306ea62cee7.json"
+        };
+
+        for (String resourceFileName : resourceFileNames)
+            runJsonResource(resourceFileName);
+
+        System.out.println("So far so good");
+    }
+
+    private void runJsonResource(String resourceFileName) throws UcumException {
+        InputStream resourceStream = TestFhirPath.class.getResourceAsStream(resourceFileName);
+        InputStreamReader inputStreamReader = new InputStreamReader(resourceStream);
+        IParser jsonParser = fhirContextR4.newJsonParser();
+
+        long start = System.currentTimeMillis();
+        IBaseResource baseResource = jsonParser.parseResource(inputStreamReader);
+        //Time: 508ms; Task: parse file zdxfsdfsdf.json
+        String logMessage = String.format("Time: %dms; Task: %s", System.currentTimeMillis() - start, "parsing " + resourceFileName);
+        System.out.println(logMessage);
+
+        Resource resource = (Resource) baseResource;
+        //library TestFHIRPath using FHIR version '4.0.0' include FHIRHelpers version '4.0.0' called FHIRHelpers parameter Patient Patient define Test: birthDate
+        String cql = String.format(
+//            "library TestFHIRPath using FHIR version '4.0.0' include FHIRHelpers version '4.0.0' called FHIRHelpers parameter %s %s define Test: %s",
+            "library TestFHIRPath using FHIR version '4.0.0' define Test : 22",
+            resource.fhirType(),
+            resource.fhirType(),
+            "entry"//test.getExpression().getValue()
+        );
+
+        Library library = translate(cql);//long
+        Context context = new Context(library);
+        context.registerLibraryLoader(getLibraryLoader());
+        context.registerDataProvider("http://hl7.org/fhir", providerR4);
+        context.setParameter(null, resource.fhirType(), resource);
+
+        ExpressionDef expressionDef = context.resolveExpressionRef("Test");
+        Object result = expressionDef.evaluate(context);
+    }
+
+    @Test
+    public void testXmlHeavy() throws UcumException {
+        String[] resourceFileNames = {
+            "r4/input/ccda/Laurena366_Schneider"
+        };
+
+        for (String resourceFileName : resourceFileNames)
+            runXmlResource(resourceFileName);
+
+        System.out.println("So far so good");
+    }
+
+    private void runXmlResource(String resourceFileName) throws UcumException {
+        InputStream resourceStream = TestFhirPath.class.getResourceAsStream(resourceFileName);
+        InputStreamReader inputStreamReader = new InputStreamReader(resourceStream);
+        IParser xmlParser = fhirContextR4.newXmlParser();
+
+        long start = System.currentTimeMillis();
+        IBaseResource baseResource = xmlParser.parseResource(inputStreamReader);
+        //Time: 508ms; Task: parse file zdxfsdfsdf.json
+        String logMessage = String.format("Time: %dms; Task: %s", System.currentTimeMillis() - start, "parsing " + resourceFileName);
+        System.out.println(logMessage);
+
+        Resource resource = (Resource) baseResource;
+        //library TestFHIRPath using FHIR version '4.0.0' include FHIRHelpers version '4.0.0' called FHIRHelpers parameter Patient Patient define Test: birthDate
+        String cql = String.format(
+            "library TestFHIRPath using FHIR version '4.0.0' include FHIRHelpers version '4.0.0' called FHIRHelpers parameter %s %s define Test: %s",
+            resource.fhirType(),
+            resource.fhirType(),
+            "realmCode"
+        );
+
+        Library library = translate(cql);//long
+        Context context = new Context(library);
+        context.registerLibraryLoader(getLibraryLoader());
+        context.registerDataProvider("http://hl7.org/fhir", providerR4);
+        context.setParameter(null, resource.fhirType(), resource);
+
+        ExpressionDef expressionDef = context.resolveExpressionRef("Test");
+        Object result = expressionDef.evaluate(context);
+    }
+
 
     @Test
     public void testFhirPathR4() {
