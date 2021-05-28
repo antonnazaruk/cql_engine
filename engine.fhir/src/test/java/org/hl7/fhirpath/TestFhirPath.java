@@ -27,6 +27,7 @@ import org.cqframework.cql.cql2elm.CqlTranslatorException;
 import org.cqframework.cql.cql2elm.FhirLibrarySourceProvider;
 import org.cqframework.cql.cql2elm.LibraryManager;
 import org.cqframework.cql.cql2elm.ModelManager;
+import org.cqframework.cql.elm.execution.ExpressionDef;
 import org.cqframework.cql.elm.execution.Library;
 import org.cqframework.cql.elm.tracking.TrackBack;
 import org.fhir.ucum.UcumEssenceService;
@@ -362,8 +363,18 @@ public class TestFhirPath {
             boolean testPassed = false;
             String message = null;
             try {
-                result = context.resolveExpressionRef("Test").evaluate(context);
-                testPassed = invalidType.equals(InvalidType.FALSE);
+                ExpressionDef expressionDef = context.resolveExpressionRef("Test");
+                long start = System.currentTimeMillis();
+                result = expressionDef.evaluate(context);
+                System.out.println("Time : " + (System.currentTimeMillis() - start) + "; " + test.getExpression().getValue());
+
+                //try patient2
+//                resourceFilePath = "r4/input/patient-example2.xml";
+//                resource = loadResourceFileR4(resourceFilePath);
+//                context.setParameter(null, resource.fhirType(), resource);
+//                result = expressionDef.evaluate(context);
+
+
             }
             catch (Exception e) {
                 testPassed = invalidType.equals(InvalidType.TRUE);
